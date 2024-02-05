@@ -1,0 +1,61 @@
+.gradient-background 
+{
+    background: linear-gradient(300deg, #0fcf6f, #961ce7, #9e473c);
+    background-size: 180% 180%;
+    animation: gradient-animation 18s ease infinite;
+  }
+  
+  @keyframes gradient-animation 
+  {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+.profile-img
+{
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+}
+
+#title
+{
+    
+}
+
+.contact-btn
+{
+    background-color: rgb(187, 40, 121);
+    border-radius: 10%;
+    border-style: none;
+    size: 3rem;
+}
+
+.skill-container
+{
+  display: grid;
+  grid-template-columns: 0.5fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  width: 50%;
+  margin: auto;
+  text-align: left;
+  row-gap: 2rem;
+}
+
+.skill-header
+{
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.parent
+{
+  justify-content: center;
+}
