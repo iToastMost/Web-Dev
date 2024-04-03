@@ -1,3 +1,8 @@
+import React from "react";
+import ReactDom from "react-dom";
+import App from "./Components/App";
+
+
 //1. Create a new React app.
 //2. Create a App.jsx component.
 //3. Create a Header.jsx component that renders a <header> element
@@ -10,6 +15,10 @@
 //https://l1pp6.csb.app/
 
 //HINT: You will need to study the classes in teh styles.css file to appy styling.
+
+ReactDom.render(
+    <App />, document.getElementById("root")
+);
 
 // If you're running this locally in VS Code use the commands:
 // npm install
