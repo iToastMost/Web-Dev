@@ -1,7 +1,26 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-ReactDOM.render(<h1>Hello World!</h1>, document.getElementById("root"));
+const firstName = "Brandon"
+const lastName = "Hayes"
+const luckyNum = 306;
+
+//1 way of setting h1 to first + last name
+
+// ReactDOM.render(
+// <div>
+//     <h1>Hello {firstName} {lastName}!</h1>
+//     <p>Your lucky number is: {luckyNum}</p>
+// </div>, 
+// document.getElementById("root"));
+
+//2nd way of setting h1 to first + last name
+ReactDOM.render(
+    <div>
+        <h1>Hello {firstName + " " + lastName}!</h1>
+        <p>Your lucky number is: {luckyNum}</p>
+    </div>, 
+    document.getElementById("root"));
 
 // If you're running this locally in VS Code use the commands:
 // npm install
