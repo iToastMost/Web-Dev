@@ -14,4 +14,16 @@ li:last-child
     border-bottom: none;
 }
 
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1em;
+  outline: none;
+  transition: border 0.3s;
+}
+
+  
   
