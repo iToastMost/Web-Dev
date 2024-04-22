@@ -22,11 +22,27 @@ let lastId = 1;
 
 app.get("/", (req, res) =>
 {
-    res.render("index.ejs", {posts: posts});
+    res.render("enter.ejs");
 });
 
 app.get("/post", (req, res) =>
 {
+    res.render("post.ejs");
+});
+
+app.get("/posts", (req, res) =>
+{
+    res.render("index.ejs", {posts, posts});
+});
+
+//TODO finish post edit in post.ejs
+// app.get("/posts/:id", (req, res) => {
+//     let index = req.params.id;
+//     let post = posts[index];
+//     res.render("posts.ejs", {postId: index, title: post.title, content: post.content});
+// });
+
+app.get("/update", (req, res) => {
     res.render("post.ejs");
 });
 
@@ -43,7 +59,21 @@ app.post("/submit", (req, res) =>
     }
     lastId = newId;
     posts.push(newPost);
-    res.redirect("/");
+    res.redirect("/posts");
+});
+
+app.post("/delete", (req, res) => 
+{
+    let index = req.body["id"];
+    posts.splice(index, 1);
+    res.redirect("/posts");
+});
+
+app.post("/delete", (req, res) => 
+{
+    let index = req.body["id"];
+    posts.splice(index, 1);
+    res.redirect("/posts");
 });
 
 app.listen(port, () => {
