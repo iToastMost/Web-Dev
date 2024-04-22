@@ -1,0 +1,21 @@
+{
+  "description": "My blog website",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2"
+  },
+  "name": "blog_site",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "devDependencies": {},
+  "scripts": {
+    "test": "Test"
+  },
+  "keywords": [
+    "blog"
+  ],
+  "author": "Brandon Hayes",
+  "license": "ISC"
+}

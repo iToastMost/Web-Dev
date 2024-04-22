@@ -1,0 +1,48 @@
+<%- include('partials/header.ejs') %>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blig Blog</title>
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Bleepers Bloggers This Blog is Poggers</h2>
+
+        <ul id="blogPosts">
+            <% posts.forEach(post => {  %>
+                <li>
+                    <h3>
+                        <%= post.title %>
+                    </h3>
+
+                    <small>
+                        <%= post.author %>
+                    </small>
+
+                    <p>
+                        <%= post.content %>
+                    </p>
+
+                    <small> 
+                        <%= post.date %>
+                    </small>
+                </li>
+            <% }); %>
+        </ul>
+
+        <div>
+            <a href="/post"><button>Create Post</button></a>
+        </div>
+    </div>
+
+</body>
+
+</html>
+<%- include('partials/footer.ejs') %>
