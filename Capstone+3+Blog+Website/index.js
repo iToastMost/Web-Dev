@@ -62,12 +62,21 @@ app.post("/submit", (req, res) =>
     res.redirect("/posts");
 });
 
-app.post("/delete", (req, res) => 
+// app.post("/delete", (req, res) => 
+// {
+//     let index = req.body["id"];
+//     posts.splice(index, 1);
+//     res.redirect("/posts");
+// });
+
+app.delete("/posts/:id", (req, res) => 
 {
-    let index = req.body["id"];
-    posts.splice(index, 1);
-    res.redirect("/posts");
+  const deleteId = req.params.id;
+  const post = posts.find((p) => p.id === deleteId);
+  posts.splice(post, 1);
+  res.redirect("/posts");
 });
+
 
 app.post("/update", (req, res) => 
 {
