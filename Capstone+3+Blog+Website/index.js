@@ -30,6 +30,13 @@ app.get("/post", (req, res) =>
     res.render("post.ejs");
 });
 
+app.get("/post/:id", (req, res) =>
+{
+    const id = parseInt(req.params.id);
+    const post = posts.find((p) => p.id === id);
+    res.render("post.ejs", {postId: id, title: post.title, content: post.content});
+});
+
 app.get("/posts", (req, res) =>
 {
     res.render("index.ejs", {posts, posts});
@@ -69,7 +76,7 @@ app.post("/submit", (req, res) =>
 //     res.redirect("/posts");
 // });
 
-app.delete("/posts/:id", (req, res) => 
+app.delete("/post/:id", (req, res) => 
 {
   const deleteId = req.params.id;
   const post = posts.find((p) => p.id === deleteId);
