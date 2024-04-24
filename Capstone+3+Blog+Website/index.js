@@ -35,12 +35,12 @@ app.get("/posts", (req, res) =>
     res.render("index.ejs", {posts, posts});
 });
 
-//TODO finish post edit in post.ejs
-// app.get("/posts/:id", (req, res) => {
-//     let index = req.params.id;
-//     let post = posts[index];
-//     res.render("posts.ejs", {postId: index, title: post.title, content: post.content});
-// });
+
+app.get("/update/:id", (req, res) => {
+    let index = req.params.id;
+    let post = posts[index];
+    res.render("post.ejs", {postId: index, title: post.title, content: post.content});
+});
 
 app.get("/update", (req, res) => {
     res.render("post.ejs");
@@ -69,10 +69,12 @@ app.post("/delete", (req, res) =>
     res.redirect("/posts");
 });
 
-app.post("/delete", (req, res) => 
+app.post("/update", (req, res) => 
 {
+    let title = req.body["title"];
+    let content = req.body["content"]
     let index = req.body["id"];
-    posts.splice(index, 1);
+    posts[index] = new Post(title, content);
     res.redirect("/posts");
 });
 

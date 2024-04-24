@@ -11,6 +11,23 @@
 </head>
 
 <body>
+    <% if (locals.postId) { %>
+
+        <div>
+            <form action="/update" method="POST">  
+                <div>
+                    <input type="text" name="title" placeholder="Title" value="<%= title %>">
+                </div>
+                <div>
+                    <textarea name="content" placeholder="Content" rows="20"><%= content %></textarea>
+                </div>
+                <div>
+                    <input type="submit" value="Update">
+                </div>
+            </form>
+        </div>
+
+    <% } else { %>
     <div>
         <form action="/submit" method="POST">  
             <div>
@@ -25,6 +42,6 @@
         </form>
     </div>
 </body>
-
+<% } %>
 </html>
 <%- include('partials/footer.ejs') %>
