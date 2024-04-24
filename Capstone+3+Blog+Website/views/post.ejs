@@ -7,19 +7,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blig Blog</title>
-  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="../styles/main.css">
 </head>
 
 <body>
-    <% if (locals.postId) { %>
+    <% if (locals.post && locals.post.id) { %>
 
         <div>
-            <form action="/update" method="POST">  
+            <form action="/update/<%= post.id %>" method="POST">  
                 <div>
-                    <input type="text" name="title" placeholder="Title" value="<%= title %>">
+                    <input type="text" name="title" placeholder="Title" value="<%= post.title %>">
                 </div>
                 <div>
-                    <textarea name="content" placeholder="Content" rows="20"><%= content %></textarea>
+                    <textarea name="content" placeholder="Content" rows="20"><%= post.content %></textarea>
                 </div>
                 <div>
                     <input type="submit" value="Update">
@@ -41,7 +41,8 @@
             </div>
         </form>
     </div>
+    <% } %>
 </body>
-<% } %>
+
 </html>
 <%- include('partials/footer.ejs') %>

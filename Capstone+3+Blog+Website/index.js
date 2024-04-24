@@ -27,14 +27,7 @@ app.get("/", (req, res) =>
 
 app.get("/post", (req, res) =>
 {
-    res.render("post.ejs");
-});
-
-app.get("/post/:id", (req, res) =>
-{
-    const id = parseInt(req.params.id);
-    const post = posts.find((p) => p.id === id);
-    res.render("post.ejs", {postId: id, title: post.title, content: post.content});
+    res.render("post.ejs", {post: {}});
 });
 
 app.get("/posts", (req, res) =>
@@ -42,15 +35,11 @@ app.get("/posts", (req, res) =>
     res.render("index.ejs", {posts, posts});
 });
 
-
-app.get("/update/:id", (req, res) => {
-    let index = req.params.id;
-    let post = posts[index];
-    res.render("post.ejs", {postId: index, title: post.title, content: post.content});
-});
-
-app.get("/update", (req, res) => {
-    res.render("post.ejs");
+//TODO finish post edit in post.ejs
+app.get("/updatePost/:id", (req, res) => {
+    const id = parseInt(req.params.id);
+    const post = posts.find((p) => p.id === id);
+    res.render("post.ejs", {post: post});
 });
 
 app.post("/submit", (req, res) => 
@@ -69,30 +58,33 @@ app.post("/submit", (req, res) =>
     res.redirect("/posts");
 });
 
-// app.post("/delete", (req, res) => 
-// {
-//     let index = req.body["id"];
-//     posts.splice(index, 1);
-//     res.redirect("/posts");
-// });
-
-app.delete("/post/:id", (req, res) => 
+app.post("/update/:id", (req, res) => 
 {
-  const deleteId = req.params.id;
-  const post = posts.find((p) => p.id === deleteId);
-  posts.splice(post, 1);
+  const patchId = parseInt(req.params.id);
+  const patchPost = posts.find((post) => post.id === patchId);
+  const newPost = 
+  {
+    id: patchId,
+    title: req.body.title || patchPost.title,
+    author: req.body.author || patchPost.author,
+    content: req.body.content || patchPost.content,
+  }
+  const searchIndex = posts.findIndex((post) => post.id === patchId);
+  posts[searchIndex] = newPost;
   res.redirect("/posts");
 });
 
-
-app.post("/update", (req, res) => 
+app.post("/delete/:id", (req, res) => 
 {
-    let title = req.body["title"];
-    let content = req.body["content"]
-    let index = req.body["id"];
-    posts[index] = new Post(title, content);
+    const deleteId = parseInt(req.params.id);
+    const postIndex = posts.findIndex((p) => p.id === deleteId);
+    if(postIndex !== -1) 
+    {
+        posts.splice(postIndex, 1);
+    }
     res.redirect("/posts");
 });
+
 
 app.listen(port, () => {
     console.log(`App is running on localhost:${port}`);

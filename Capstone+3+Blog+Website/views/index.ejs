@@ -7,7 +7,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blig Blog</title>
-  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="/styles/main.css">
 </head>
 
 <body>
@@ -35,15 +35,15 @@
                     </small>
 
                     <div>
-                        <form id="deleteAction" action="/post/<%= post.id %>" method="POST">  
+                        <form id="deleteAction" action="/delete/<%= post.id %>" method="POST">  
                             <div>
                                <input type="submit" value="Delete">
                             </div>
                         </form>
 
-                        <form id="updateAction" action="/update" method="get">
+                        <form id="updateAction" action="/updatePost/<%= post.id %>" method="get">
                             <div>
-                               <a href="/update/<%= post.id %>"><input type="submit" value="Edit"></a>
+                               <input type="submit" value="Edit">
                             </div>
                         </form>
                     </div>
