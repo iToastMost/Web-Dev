@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<head>
+
+</head>
+
+<body>
+
+    <div>
+        <h1>Brandon Hayes</h1>
+        <h2>Books I've Read</h2>
+        <p>The books go here, wow!</p>
+        <hr></hr>
+    </div>
+
+    <% for(let review of reviewItems) {%>
+        <div>
+            <img src="https://covers.openlibrary.org/b/isbn/<%= review.isbn %>-M.jpg" />
+            <p>Book Title: <%= review.title %></p>
+            <p>Author: <%= review.author %></p>
+            <p>ISBN: <%= review.isbn %></p>
+            <p>Genre: <%= review.genre %></p>
+            <p> Review: <%= review.review_text %></p>
+        </div>
+        <hr></hr>
+   <% } %>
+
+</body>
