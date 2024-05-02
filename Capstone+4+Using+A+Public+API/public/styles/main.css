@@ -1,0 +1,12 @@
+input, textarea 
+{
+    background-color: grey;
+    width: 15%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+    outline: none;
+    transition: border 0.3s;
+    color: white;
+}

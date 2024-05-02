@@ -62,6 +62,7 @@ app.post("/submit", async (req, res) => {
     const review = req.body.review;
     const genre = req.body.genre;
     const publication_year = req.body.year;
+    const note = req.body.notes;
 
     const result = await db.query("INSERT INTO books (title, author, ISBN, review_text, genre, publication_year) VALUES ($1, $2, $3, $4, $5, $6)", [title, author, ISBN, review, genre, publication_year])
 
