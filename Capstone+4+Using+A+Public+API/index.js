@@ -32,8 +32,14 @@ app.get("/", async (req, res) => {
     } while (!randomPainting.primaryImage);
     
     const img = randomPainting.primaryImage;
+    const title = randomPainting.title;
+    const artist = randomPainting.artistDisplayName;
+    const date = randomPainting.objectDate;
+    const medium = randomPainting.medium;
+    const wiki = randomPainting.objectWikidata_URL;
+    const isPublicDomain = randomPainting.isPublicDomain;
     
-    res.render("index.ejs", {imgURL: img});
+    res.render("index.ejs", {imgURL: img, title: title, artist: artist, date: date, medium: medium, wikiURL: wiki, publicDomain: isPublicDomain});
 })
 
 app.listen(port, () => {

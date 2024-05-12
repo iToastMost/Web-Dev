@@ -13,7 +13,22 @@
     <div class="container">
         <h1>Random Musuem Art</h1>
         <img width="800px" height="600" src="<%= imgURL %>" />
+        <h2>Title: <%= title %></h2>
+        <% if(artist) { %>
+        <h3>Artist: <%= artist %></h3>
+          <% } %>
+        <h4>Medium: <%= medium %></h4>
+        <h4>Date: <%= date %></h4>
+       <% if(publicDomain){ %>
+          <h5>Is this piece public domain: Yes</h5>
+       <% } else { %>
+          <h5>Is this piece public domain: No </h5>
+       <% } %>
+        <% if(wikiURL) { %>
+        <a href="<%= wikiURL %>">Wiki Page</a>
+        <% } %>
     </div>
+    <hr />
     <button><a href="/">New Art</a></button>
 </body>
 
