@@ -18,7 +18,9 @@
         <h3>Artist: <%= artist %></h3>
           <% } %>
         <h4>Medium: <%= medium %></h4>
-        <h4>Date: <%= date %></h4>
+        <% if(date) { %>
+          <h4>Date: <%= date %></h4>
+          <% } %>
        <% if(publicDomain){ %>
           <h5>Is this piece public domain: Yes</h5>
        <% } else { %>
@@ -28,8 +30,13 @@
         <a href="<%= wikiURL %>">Wiki Page</a>
         <% } %>
     </div>
+
     <hr />
-    <button><a href="/">New Art</a></button>
+
+    <div class="container">
+      <button><a href="/">New Art</a></button>
+    </div>
+    
 </body>
 
 </html>

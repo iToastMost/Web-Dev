@@ -10,3 +10,16 @@ input, textarea
     transition: border 0.3s;
     color: white;
 }
+
+.container 
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+body
+{
+   /* background-image: url("../mosaic-1927649_1920.jpg"); */
+}
