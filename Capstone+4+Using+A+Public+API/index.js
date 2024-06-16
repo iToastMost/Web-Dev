@@ -8,7 +8,7 @@ const port = 3000;
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-function getRandomImage()
+async function getRandomArt()
 {
 
 }
@@ -16,10 +16,10 @@ function getRandomImage()
 app.get("/", async (req, res) => {
     const response = await axios.get("https://collectionapi.metmuseum.org/public/collection/v1/objects");
     const musuemIDs = response.data.objectIDs;
-
+    
     let randomIndex;
     let randomMusuemID;
-    let randomPainting;
+    let randomArt;
 
     do 
     {
@@ -27,19 +27,27 @@ app.get("/", async (req, res) => {
         randomMusuemID = musuemIDs[randomIndex].toString();
 
         const objectRespone = await axios.get(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${randomMusuemID}`);
-        randomPainting = objectRespone.data;
+        randomArt = objectRespone.data;
         
-    } while (!randomPainting.primaryImage);
+    } while (!randomArt.primaryImage);
     
-    const img = randomPainting.primaryImage;
-    const title = randomPainting.title;
-    const artist = randomPainting.artistDisplayName;
-    const date = randomPainting.objectDate;
-    const medium = randomPainting.medium;
-    const wiki = randomPainting.objectWikidata_URL;
-    const isPublicDomain = randomPainting.isPublicDomain;
+    const img = randomArt.primaryImage;
+    const title = randomArt.title;
+    const artist = randomArt.artistDisplayName;
+    const date = randomArt.objectDate;
+    const medium = randomArt.medium;
+    const wiki = randomArt.objectWikidata_URL;
+    const isPublicDomain = randomArt.isPublicDomain;
     
-    res.render("index.ejs", {imgURL: img, title: title, artist: artist, date: date, medium: medium, wikiURL: wiki, publicDomain: isPublicDomain});
+    res.render("index.ejs", {
+        imgURL: img, 
+        title: title, 
+        artist: artist, 
+        date: date, 
+        medium: medium, 
+        wikiURL: wiki,
+        publicDomain: isPublicDomain,
+    });
 })
 
 app.listen(port, () => {
