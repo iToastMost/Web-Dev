@@ -14,9 +14,16 @@ async function getRandomArt()
 }
 
 app.get("/", async (req, res) => {
-    const response = await axios.get("https://collectionapi.metmuseum.org/public/collection/v1/objects");
+
+    const selectedDepartment = req.query.department || "all";
+
+    const response = await axios.get("https://collectionapi.metmuseum.org/public/collection/v1/objects?hasImages");
+    
     const musuemIDs = response.data.objectIDs;
     
+    const response2 = await axios.get("https://collectionapi.metmuseum.org/public/collection/v1/departments");
+    const departments = response2.data.departments;
+
     let randomIndex;
     let randomMusuemID;
     let randomArt;
@@ -47,6 +54,8 @@ app.get("/", async (req, res) => {
         medium: medium, 
         wikiURL: wiki,
         publicDomain: isPublicDomain,
+        departments: departments,
+        selectedDepartment: selectedDepartment
     });
 })
 

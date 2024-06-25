@@ -15,6 +15,9 @@
 
         <select>
           <option value="all">All</option>
+          <% departments.forEach(department => { %>
+            <option value="<%= department.departmentId %>"><%= department.displayName %> </option>
+          <% }); %>
         </select>
         <br />
 
