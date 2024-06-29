@@ -25,9 +25,16 @@
     border-radius: 50%;
 }
 
-#title
+.title
 {
     
+}
+
+#skill-img
+{
+  height: 100px;
+  width: 100px;
+  margin: 10px;
 }
 
 .contact-btn
@@ -41,8 +48,8 @@
 .skill-container
 {
   display: grid;
-  grid-template-columns: 0.5fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
   width: 50%;
   margin: auto;
   text-align: left;
