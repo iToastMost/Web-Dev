@@ -54,6 +54,14 @@
   margin: auto;
   text-align: left;
   row-gap: 2rem;
+  max-width: 1000px;
+  min-width: 500px;
+}
+
+.project 
+{
+  margin: 25px;
+  padding: 25px;
 }
 
 .skill-header
